@@ -84,10 +84,10 @@ Read:
 rp <- as.matrix(read.table(rp_fname)[,seq(6)])
 dim(rp)
 ```
-With the found rps, we can calculate Framewise Displacement using the `FD` function. By finding the absolute values of the differences in rps, we produce the following results on the time interval:
+With the found rps, we can calculate Framewise Displacement using the `FD` function. By summing the absolute values of the differences in rps, we produce the following results on the time interval:
 
 ```{r}
-FD(rp)
+fd <- FD(rp)
 ```
 
 
@@ -104,10 +104,6 @@ IDdvars <- IDvols(xii_mat, method='DVARS')
 ```
 
 The DVARS method used within the `fMRIscrub` package is based on Afyouni and Nichols (2018) dual cutoff method. Similar to FD, DVARS is found by finding the difference in signals. However, FD is based on the motion data, the RPs found earlier. DVARS is based on BOLD signal data, finding the difference between volumes across space.
-
-
-- ask about citation
-- is it necessary to explain graph?
 
 
 Plot:
@@ -134,9 +130,14 @@ Plot:
 ```{r}
 plot(IDproj)
 ```
-
+Read:
 
 ```{r}
 # IDxii <- IDvols_xifti(xii)
+```
+
+Plot:
+
+```{r}
 # plot(IDxii)
 ```
